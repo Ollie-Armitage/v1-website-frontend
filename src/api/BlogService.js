@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/blog/';
+const url = 'https://ollie-website-backend.azurewebsites.net/api/blog/';
 
 class BlogService {
 

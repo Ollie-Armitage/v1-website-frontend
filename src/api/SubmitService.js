@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/submits/';
+const url = 'https://ollie-website-backend.azurewebsites.net/api/submits';
 
 class SubmitService {
     // Get Posts
