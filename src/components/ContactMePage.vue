@@ -46,8 +46,28 @@
 
           <v-row class="justify-center">
             <v-btn :loading="submitting" large @click="submitButton()" class="primary darken-2">
-              Submit</v-btn>
+              Submit
+            </v-btn>
           </v-row>
+
+          <v-snackbar
+              v-model="submittedAlert">
+            Message Sent.
+
+            <template v-slot:action="{ attrs }">
+              <v-btn
+                  icon
+                  color="pink"
+                  text
+                  v-bind="attrs"
+                  @click="submittedAlert = false"
+              ><v-icon>mdi-close</v-icon>
+
+              </v-btn>
+            </template>
+
+          </v-snackbar>
+
         </v-container>
 
 
@@ -74,16 +94,18 @@ export default {
         subject: null,
         message: null,
       },
-      submitting: false
+      submitting: false,
+      submittedAlert: false
     }
   },
   methods: {
     submitButton: async function () {
       this.submitting = true
       await PostService.insertSubmit(this.ticket)
-
       this.submitting = false
-    }
+      this.submittedAlert = true
+    },
+
   },
 }
 </script>

@@ -248,10 +248,10 @@ export default {
     lastPost: {},
     top_projects: [
       {
-        name: "Interactive Map",
+        name: "Prototype Interactive Map",
         link: "/interactive-map",
         image: "map.png",
-        description: "Interactive Map Web Application written in Vue.js.",
+        description: "Prototype Interactive Map Web Application written in Vue.js.",
         github: "https://github.com/Ollie-Armitage/vue-interactive-map"
       },
       {
