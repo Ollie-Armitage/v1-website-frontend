@@ -34,6 +34,16 @@
       </v-img>
     </section>
 
+    <PageSection>
+      <template v-slot:subheader>
+        <span class="red--text font-weight-light">Website is currently under development! Please
+          forgive
+          any
+          strange
+          behaviour. (10/10/2020)</span>
+      </template>
+    </PageSection>
+
     <!--   About Me   -->
     <PageSection title="ABOUT ME">
 
