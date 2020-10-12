@@ -56,7 +56,7 @@
 
         Hi, I'm Ollie. I'm a recent computer science graduate of
         the University of Bath, looking to further my technological knowledge and industrial
-        experience. While I find interest in many fields in computer science, The fields I tend
+        experience. While I find interest in many fields of computer science, The fields I tend
         towards and enjoy the most are software and web development.
 
         <br>
