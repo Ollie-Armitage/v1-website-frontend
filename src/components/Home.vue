@@ -100,9 +100,8 @@
       </template>
 
       <template v-slot:page-content>
-        <v-card class="pa-4">
-          <BlogPost v-if="lastPostLoaded" :post="lastPost" ></BlogPost>
-          <v-alert v-else outlined class="red--text">Latest blog post not currently available</v-alert>
+        <v-card class="pa-4" v-if="lastPostLoaded">
+          <BlogPost :post="lastPost" ></BlogPost>
         </v-card>
         <v-btn
             to="/blog"
@@ -166,7 +165,7 @@
                           v-bind="attrs"
                           v-on="on"
                           icon
-                          :to="project.link">
+                          :href="project.link">
                         <v-icon large>mdi-arrow-expand</v-icon>
                       </v-btn>
                     </template>
@@ -259,14 +258,14 @@ export default {
     top_projects: [
       {
         name: "Prototype Interactive Map",
-        link: "/interactive-map",
+        link: "https://polite-wave-02698c403.azurestaticapps.net",
         image: "map.png",
         description: "Prototype Interactive Map Web Application written in Vue.js.",
         github: "https://github.com/Ollie-Armitage/vue-interactive-map"
       },
       {
         name: "My Website",
-        link: " ",
+        link: "/",
         image: "bus_stop.jpg",
         description: "This website! A SPA (Single Page Application) on a  MEVN (Mean, Express, " +
             "Vue, Node) full stack.",
