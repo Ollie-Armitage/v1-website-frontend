@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-4" outlined>
+  <v-card class="pa-4 text-left" outlined >
     <v-card outlined>
       <v-img :src="require('@/assets/ajax_downloaded/' + post.headerImage + '')"
              height="100">
@@ -11,8 +11,7 @@
       </v-img>
     </v-card>
 
-    <v-card-text>
-      {{ post.body }}
+    <v-card-text v-html="post.body">
     </v-card-text>
   </v-card>
 </template>
