@@ -267,7 +267,8 @@ export default {
         name: "My Website",
         link: "/",
         image: "bus_stop.jpg",
-        description: "This website! A SPA (Single Page Application) on a  MEVN (Mean, Express, " +
+        description:
+            "This website! A SPA (Single Page Application) on a  MEVN (MongoDB, Express, " +
             "Vue, Node) full stack.",
         github: "https://github.com/Ollie-Armitage/website"
       },
