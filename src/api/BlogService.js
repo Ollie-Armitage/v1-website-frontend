@@ -23,15 +23,6 @@ class BlogService {
         })
     }
 
-    // Create Posts
-    static insertBlogPost(ticket){
-        return axios.post(url, ticket)
-    }
-
-    // Delete Posts
-    static deleteBlogPost(id){
-        return axios.delete(`${url}${id}`)
-    }
 }
 
 export default BlogService
