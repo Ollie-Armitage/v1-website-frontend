@@ -9,7 +9,11 @@ Vue.use(VueRouter);
 export default new VueRouter({
     mode: "history",
     routes: [
-        {path: '*', component: HomePage},
-        {path: '/blog', component: BlogPage}
+        {path: '*', component: HomePage, meta: {
+            title: 'Ollie Armitage Portfolio'
+            }},
+        {path: '/blog', component: BlogPage, meta: {
+            title: 'Blog'
+            }}
     ]
 });
