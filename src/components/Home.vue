@@ -96,12 +96,12 @@
       <template v-slot:subheader>
         Currently in the process of designing a blog. Once the blog is implemented, I
         will be using it to to document my work. The initial aim to post once a
-        month. This may change over time. The latest post is displayed below.
+        month. This may change over time.
       </template>
 
       <template v-slot:page-content>
         <v-card class="pa-4" v-if="lastPostLoaded">
-          <BlogPost :post="lastPost" ></BlogPost>
+          <BlogPost :post="lastPost"></BlogPost>
         </v-card>
         <v-btn
             to="/blog"
