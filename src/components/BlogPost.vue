@@ -3,10 +3,20 @@
     <v-card outlined>
       <v-img :src="require('@/assets/ajax_downloaded/' + post.headerImage + '')"
              height="100">
-        <v-card-title class="font-weight-bold" style="font-size: 24px">
-          {{ post.title }}
-          <v-spacer></v-spacer>
-          {{ post.date }}
+        <v-card-title class="font-weight-bold" style="font-size: 24px; overflow: hidden">
+          <v-container class="ml-4 pa-0">
+            <v-row>
+              <span style="white-space: nowrap">{{ post.title }}</span>
+            </v-row>
+            <v-row>
+              <span class="font-weight-light" style="font-size: 20px">
+                {{ post.date }}
+              </span>
+
+            </v-row>
+          </v-container>
+
+
         </v-card-title>
       </v-img>
     </v-card>

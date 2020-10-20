@@ -84,12 +84,11 @@
       </template>
 
       <template v-slot:subheader>
-        Currently in the process of designing a blog. Once the blog is implemented, I
-        will be using it to to document my work. The initial aim to post once a
-        month. This may change over time.
+        I'll be using this blog to document my work. The initial aim is to post once a month
+        regarding my experience of technologies I've been using. This may change over time.
       </template>
 
-      <template v-slot:page-content>
+      <template v-slot:page-content class="hidden-sm-and-down">
         <v-card class="pa-4" v-if="lastPostLoaded">
           <BlogPost :post="lastPost"></BlogPost>
         </v-card>
