@@ -6,7 +6,8 @@
 
     <template v-slot:subheader>
       If you wish to contact me, please email me through <a class="font-weight-medium"
-        href="mailto:oliverrarmitage@gmail.com">oliverrarmitage@gmail.com</a>, OR alternatively
+                                                            href="mailto:oliverrarmitage@gmail.com">oliverrarmitage@gmail.com</a>,
+      OR alternatively
       submit a
       message below.
     </template>
@@ -17,6 +18,8 @@
 
           <v-row>
             <v-text-field
+                :error="errors.includes('name')"
+                type="text"
                 outlined
                 v-model="ticket.name"
                 label="Name">
@@ -25,6 +28,8 @@
 
           <v-row>
             <v-text-field
+                :error="errors.includes('email')"
+                type="email"
                 outlined
                 v-model="ticket.email" label="Email">
             </v-text-field>
@@ -32,6 +37,8 @@
 
           <v-row>
             <v-text-field
+                :error="errors.includes('subject')"
+                type="text"
                 outlined
                 v-model="ticket.subject"
                 label="Subject">
@@ -40,6 +47,8 @@
 
           <v-row>
             <v-textarea
+                :error="errors.includes('message')"
+                type="text"
                 outlined
                 v-model="ticket.message"
                 label="Enter Message Here">
@@ -72,8 +81,13 @@
           </v-snackbar>
 
         </v-container>
-
-
+        <v-alert
+            v-if="errors.length > 0"
+            outlined
+            dense
+            type="error">
+          Please fill in all the required fields.
+        </v-alert>
       </v-form>
     </template>
   </PageSection>
@@ -91,6 +105,7 @@ export default {
   },
   data: function () {
     return {
+      errors: [],
       ticket: {
         name: null,
         email: null,
@@ -103,13 +118,28 @@ export default {
   },
   methods: {
     submitButton: async function () {
+      this.errors = []
       this.submitting = true
-      await PostService.insertSubmit(this.ticket)
+      if(this.checkForm()){
+        await PostService.insertSubmit(this.ticket)
+        this.submittedAlert = true
+      }
       this.submitting = false
-      this.submittedAlert = true
-    },
 
-  },
+    },
+    checkForm: function () {
+
+      this.requiredFields = ["name", "email", "subject", "message"]
+
+      this.requiredFields.forEach((field) => {
+        if (!this.ticket[field]) this.errors.push(field)
+      })
+
+      return this.errors.length <= 0;
+
+    }
+  }
+
 }
 </script>
 

@@ -291,7 +291,6 @@ export default {
     getLastPost: async function () {
       let post = await BlogService.getBlogPost(0)
       post = post[0]
-      console.log(post)
 
       if (post.headerImage ===
           undefined) {
