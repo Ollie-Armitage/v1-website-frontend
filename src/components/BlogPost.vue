@@ -1,9 +1,9 @@
 <template>
-  <v-card class="pa-4 text-left" outlined >
+  <v-card class="pa-4 text-left" outlined style="font-family: 'Inconsolata', monospace;">
     <v-card outlined>
       <v-img :src="require('@/assets/ajax_downloaded/' + post.headerImage + '')"
              height="100">
-        <v-card-title>
+        <v-card-title class="font-weight-bold" style="font-size: 24px">
           {{ post.title }}
           <v-spacer></v-spacer>
           {{ post.date }}
@@ -11,7 +11,7 @@
       </v-img>
     </v-card>
 
-    <v-card-text v-html="post.body">
+    <v-card-text class="font-weight-thin" style="font-size: 16px"  v-html="post.body">
     </v-card-text>
   </v-card>
 </template>
@@ -24,7 +24,11 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Merriweather&display=swap');
+
+
 ::v-deep .v-image__image {
   filter: blur(5px);
 }
+
 </style>
