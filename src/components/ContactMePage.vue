@@ -5,7 +5,9 @@
     </template>
 
     <template v-slot:subheader>
-      If you wish to contact me, please email me through oliverrarmitage@gmail.com, or submit a
+      If you wish to contact me, please email me through <a class="font-weight-medium"
+        href="mailto:oliverrarmitage@gmail.com">oliverrarmitage@gmail.com</a>, OR alternatively
+      submit a
       message below.
     </template>
 
@@ -61,7 +63,8 @@
                   text
                   v-bind="attrs"
                   @click="submittedAlert = false"
-              ><v-icon>mdi-close</v-icon>
+              >
+                <v-icon>mdi-close</v-icon>
 
               </v-btn>
             </template>
