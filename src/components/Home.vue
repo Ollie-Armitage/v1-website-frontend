@@ -62,7 +62,7 @@
 
         Languages I have good experience in are C, Python, Java, Lua, JavaScript, HTML and
         CSS. I also have some experience in Haskell, Matlab and SQL. Recent projects
-        I've been working on have lead me to work with technologies such as:
+        I've been working on have led me to work with technologies such as:
 
 
       </template>
