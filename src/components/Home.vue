@@ -268,7 +268,7 @@ export default {
         description:
             "A 2D Matrix Convolution function, taking an image and a filter (kernel) matrix, " +
             "and outputting the convolution of the two.",
-        github: "https://github.com/Ollie-Armitage/convolution"
+        github: "https://github.com/ac2522/computer_vision"
       },
       {
         name: "MPI Parallel Matrix Averaging Program",
