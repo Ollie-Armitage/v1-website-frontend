@@ -60,15 +60,14 @@
 
         <br>
 
-        Languages I have good experience in are C, Python, Java, Lua, JavaScript, HTML and
-        CSS. I also have some experience in Haskell, Matlab and SQL. Recent projects
+        I have experience in a wide range of computer languages from both university and recreational
+        experience including: C, C++, Python, Java, Lua, JavaScript, HTML and CSS. Recent projects
         I've been working on have led me to work with technologies such as:
-
 
       </template>
 
       <template v-slot:page-content>
-        <LinkList></LinkList>
+        <ProjectList></ProjectList>
       </template>
 
     </PageSection>
@@ -221,14 +220,14 @@
     <v-banner></v-banner>
 
     <!--  Contact Me  -->
-    <ContactMePage></ContactMePage>
+    <ContactMeSection></ContactMeSection>
   </v-main>
 </template>
 
 <script>
 import PageSection from "@/components/PageSection";
-import ContactMePage from "@/components/ContactMePage";
-import LinkList from "@/components/LinkList";
+import ContactMeSection from "@/components/ContactMeSection";
+import ProjectList from "@/components/ProjectList";
 import BlogService from "@/api/BlogService";
 import BlogPost from "@/components/BlogPost";
 
@@ -236,8 +235,8 @@ export default {
   name: "HomePage",
   components: {
     BlogPost,
-    LinkList,
-    ContactMePage,
+    ProjectList,
+    ContactMeSection,
     PageSection,
   },
 
