@@ -113,7 +113,7 @@
 
       <v-container>
         <v-row class="justify-center">
-          <v-col v-for="project in projects.slice(0, 2)" :key="project.id" sm="4">
+          <v-col v-for="project in allProjects.slice(0, 2)" :key="project.id" sm="4">
             <v-card
                 outlined
                 height="400"
@@ -152,11 +152,12 @@
                       <v-btn
                           v-bind="attrs"
                           v-on="on"
-                          icon>
+                          icon
+                      :to="project.project_id">
                         <v-icon large>mdi-arrow-expand</v-icon>
                       </v-btn>
                     </template>
-                    <span>Preview</span>
+                    <span>More Info</span>
                   </v-tooltip>
                 </v-card-actions>
               </div>
@@ -176,11 +177,12 @@
         <v-row class="justify-center">
           <v-col sm="8">
             <v-expansion-panels accordion>
-              <v-expansion-panel v-for="project in projects.slice(2)" :key="project.id">
+              <v-expansion-panel v-for="project in allProjects.slice(2)" :key="project.id">
                 <v-expansion-panel-header class="text-h6 font-weight-thin">
                   {{ project.title }}
                 </v-expansion-panel-header>
                 <v-expansion-panel-content class="font-weight-light pr-2">
+
                   <v-row>
                     <v-col cols="10">
                       {{ project.subtitle }}
@@ -189,8 +191,9 @@
                     <v-col cols="2">
                       <v-row class="justify-end">
                         <v-tooltip top>
-                          <template v-slot:activator="{ on, attrs}">
+                          <template v-slot:activator="{on, attrs}">
                             <v-btn
+                                class="ma-1"
                                 :href="project.githubLink"
                                 v-bind="attrs"
                                 v-on="on"
@@ -200,6 +203,22 @@
                           </template>
                           <span>Github</span>
                         </v-tooltip>
+
+                        <v-tooltip top>
+                          <template v-slot:activator="{on, attrs}">
+                            <v-btn
+                                class="ma-1"
+                                :to="project.project_id"
+                                v-bind="attrs"
+                                v-on="on"
+                                icon>
+                              <v-icon large>mdi-arrow-expand</v-icon>
+                            </v-btn>
+                          </template>
+                          <span>More Info</span>
+                        </v-tooltip>
+
+
 
                       </v-row>
                     </v-col>
@@ -227,9 +246,8 @@
 import PageSection from "@/components/PageSection";
 import ContactMeSection from "@/components/ContactMeSection";
 import ProjectList from "@/components/ProjectList";
-import BlogService from "@/api/BlogService";
 import BlogPost from "@/components/BlogPost";
-import ProjectService from "@/api/ProjectService";
+import { mapGetters } from 'vuex'
 
 export default {
   name: "HomePage",
@@ -239,36 +257,13 @@ export default {
     ContactMeSection,
     PageSection,
   },
-
+  computed: mapGetters(['allProjects']),
   data: () => ({
     lastPostLoaded: false,
     lastPost: null,
     projects: [],
   }),
-  methods: {
-    getLastPost: async function () {
-      let post = await BlogService.getBlogPost(0)
-
-      if(post.length === 0) return;
-
-      post = post[0]
-
-      if (post.headerImage ===
-          undefined) {
-        post.headerImage = 'bus_stop.jpg'
-      }
-
-      post.date = post.createdAt
-
-      this.lastPost = post
-    },
-  },
-  async mounted() {
-    this.projects = await ProjectService.getProjects()
-    await this.getLastPost()
-    this.lastPostLoaded = true
-
-  }
+  methods: {}
 };
 </script>
 

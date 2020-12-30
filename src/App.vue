@@ -6,8 +6,19 @@
 
 <script>
 
+import { mapActions } from 'vuex'
+
 export default {
   name: 'App',
+  methods: {
+    ...mapActions(['fetchProjects'])
+  },
+  data: () => ({
+    projects: []
+  }),
+  created(){
+    this.fetchProjects();
+  }
 
 };
 </script>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import router from './plugins/vue-router';
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -14,7 +15,11 @@ router.afterEach((to, from) => {
   });
 });
 
+
+
+
 new Vue({
+  store,
   vuetify,
   router,
   render: h => h(App),

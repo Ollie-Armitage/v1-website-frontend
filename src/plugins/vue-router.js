@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HomePage from "@/components/Home";
-import BlogPage from "@/components/Blog"
+import BlogPage from "@/components/Blog";
+import ProjectPage from "@/components/Project"
 
 Vue.use(VueRouter);
 
@@ -14,6 +15,7 @@ export default new VueRouter({
             }},
         {path: '/blog', component: BlogPage, meta: {
             title: 'Blog'
-            }}
+            }},
+        {path: 'project/*', component: ProjectPage}
     ]
 });
