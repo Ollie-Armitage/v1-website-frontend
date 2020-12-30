@@ -16,6 +16,11 @@ export default new VueRouter({
         {path: '/blog', component: BlogPage, meta: {
             title: 'Blog'
             }},
-        {path: 'project/*', component: ProjectPage}
+        {
+            path: '/:project_id',
+            props: true,
+            name: 'project',
+            component: ProjectPage
+        }
     ]
 });

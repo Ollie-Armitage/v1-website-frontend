@@ -16,7 +16,7 @@ export default {
   data: () => ({
     projects: []
   }),
-  created(){
+  beforeMount(){
     this.fetchProjects();
   }
 

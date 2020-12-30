@@ -88,8 +88,7 @@
       </template>
 
       <template v-slot:page-content class="hidden-sm-and-down">
-        <v-card class="pa-4" v-if="lastPostLoaded && lastPost !== null">
-          <BlogPost :post="lastPost"></BlogPost>
+        <v-card class="pa-4">
         </v-card>
         <v-btn
             to="/blog"
@@ -204,19 +203,21 @@
                           <span>Github</span>
                         </v-tooltip>
 
-                        <v-tooltip top>
-                          <template v-slot:activator="{on, attrs}">
-                            <v-btn
-                                class="ma-1"
-                                :to="project.project_id"
-                                v-bind="attrs"
-                                v-on="on"
-                                icon>
-                              <v-icon large>mdi-arrow-expand</v-icon>
-                            </v-btn>
-                          </template>
-                          <span>More Info</span>
-                        </v-tooltip>
+                        <router-link :to="{ name: 'project', params: {project_id: project.project_id}}">
+                          <v-tooltip top>
+                            <template v-slot:activator="{on, attrs}">
+                              <v-btn
+                                  class="ma-1"
+                                  v-bind="attrs"
+                                  v-on="on"
+                                  icon>
+                                <v-icon large>mdi-arrow-expand</v-icon>
+                              </v-btn>
+                            </template>
+                            <span>More Info</span>
+                          </v-tooltip>
+                        </router-link>
+
 
 
 
@@ -246,24 +247,16 @@
 import PageSection from "@/components/PageSection";
 import ContactMeSection from "@/components/ContactMeSection";
 import ProjectList from "@/components/ProjectList";
-import BlogPost from "@/components/BlogPost";
 import { mapGetters } from 'vuex'
 
 export default {
   name: "HomePage",
   components: {
-    BlogPost,
     ProjectList,
     ContactMeSection,
     PageSection,
   },
-  computed: mapGetters(['allProjects']),
-  data: () => ({
-    lastPostLoaded: false,
-    lastPost: null,
-    projects: [],
-  }),
-  methods: {}
+  computed: mapGetters(['allProjects'])
 };
 </script>
 
