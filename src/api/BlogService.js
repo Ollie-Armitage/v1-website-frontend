@@ -1,17 +1,18 @@
 import axios from 'axios';
+import { backendURL } from '@/config'
 
-const url = 'https://ollie-website-backend.azurewebsites.net/blog/';
+let url  = backendURL + 'blog'
 
 class BlogService {
 
     // Get Posts
-    static getBlogPost(previousEntry){
+    static getBlogPost(){
 
 
         // eslint-disable-next-line no-async-promise-executor
         return new Promise(async (resolve, reject) => {
             try{
-                const res = await axios.get(`${url}${previousEntry}`);
+                const res = await axios.get(`${url}`);
                 const data = res.data;
                 resolve(data.map(blog => ({
                     ...blog,

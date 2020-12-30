@@ -88,7 +88,7 @@
       </template>
 
       <template v-slot:page-content class="hidden-sm-and-down">
-        <v-card class="pa-4" v-if="lastPostLoaded">
+        <v-card class="pa-4" v-if="lastPostLoaded && lastPost !== null">
           <BlogPost :post="lastPost"></BlogPost>
         </v-card>
         <v-btn
@@ -113,7 +113,7 @@
 
       <v-container>
         <v-row class="justify-center">
-          <v-col v-for="project in top_projects" :key="project.name" sm="4">
+          <v-col v-for="project in projects.slice(0, 2)" :key="project.id" sm="4">
             <v-card
                 outlined
                 height="400"
@@ -122,10 +122,10 @@
 
               <div style="height: 85%; overflow: hidden">
 
-                <v-card-title class="font-weight-thin">{{ project.name }}</v-card-title>
-                <v-img :src="require('@/assets/' + project.image)" height="150"></v-img>
+                <v-card-title class="font-weight-thin">{{ project.title }}</v-card-title>
+                <v-img :src="project.imageLink" height="150"></v-img>
 
-                <v-card-text class="font-weight-light">{{ project.description }}</v-card-text>
+                <v-card-text class="font-weight-light">{{ project.subtitle }}</v-card-text>
               </div>
 
               <div style="height: 15%">
@@ -136,7 +136,7 @@
                   <v-tooltip top>
                     <template v-slot:activator="{ on, attrs}">
                       <v-btn
-                          :href="project.github"
+                          :href="project.githubLink"
                           class="mr-2"
                           v-bind="attrs"
                           v-on="on"
@@ -152,8 +152,7 @@
                       <v-btn
                           v-bind="attrs"
                           v-on="on"
-                          icon
-                          :href="project.link">
+                          icon>
                         <v-icon large>mdi-arrow-expand</v-icon>
                       </v-btn>
                     </template>
@@ -169,7 +168,7 @@
         <v-row class="justify-center">
           <v-col sm="8" class="text-center title ">
             <span style="font-family: 'Montserrat', sans-serif;" class="font-weight-thin">And
-              Some of my less recent or non web-based projects.</span>
+              Some of my non web-based projects.</span>
           </v-col>
         </v-row>
 
@@ -177,14 +176,14 @@
         <v-row class="justify-center">
           <v-col sm="8">
             <v-expansion-panels accordion>
-              <v-expansion-panel v-for="project in extra_projects" :key="project.name">
+              <v-expansion-panel v-for="project in projects.slice(2)" :key="project.id">
                 <v-expansion-panel-header class="text-h6 font-weight-thin">
-                  {{ project.name }}
+                  {{ project.title }}
                 </v-expansion-panel-header>
                 <v-expansion-panel-content class="font-weight-light pr-2">
                   <v-row>
                     <v-col cols="10">
-                      {{ project.description }}
+                      {{ project.subtitle }}
                     </v-col>
 
                     <v-col cols="2">
@@ -192,7 +191,7 @@
                         <v-tooltip top>
                           <template v-slot:activator="{ on, attrs}">
                             <v-btn
-                                :href="project.github"
+                                :href="project.githubLink"
                                 v-bind="attrs"
                                 v-on="on"
                                 icon>
@@ -230,6 +229,7 @@ import ContactMeSection from "@/components/ContactMeSection";
 import ProjectList from "@/components/ProjectList";
 import BlogService from "@/api/BlogService";
 import BlogPost from "@/components/BlogPost";
+import ProjectService from "@/api/ProjectService";
 
 export default {
   name: "HomePage",
@@ -242,53 +242,15 @@ export default {
 
   data: () => ({
     lastPostLoaded: false,
-    lastPost: {},
-    top_projects: [
-      {
-        name: "Prototype Interactive Map",
-        link: "https://polite-wave-02698c403.azurestaticapps.net",
-        image: "map.png",
-        description: "Prototype Interactive Map Web Application written in Vue.js.",
-        github: "https://github.com/Ollie-Armitage/vue-interactive-map"
-      },
-      {
-        name: "My Website",
-        link: "/",
-        image: "bus_stop.jpg",
-        description:
-            "This website! A SPA (Single Page Application) on a  MEVN (MongoDB, Express, " +
-            "Vue, Node) full stack.",
-        github: "https://github.com/Ollie-Armitage/website"
-      },
-    ],
-    extra_projects: [
-      {
-        name: "Image Convolution",
-        description:
-            "A 2D Matrix Convolution function, taking an image and a filter (kernel) matrix, " +
-            "and outputting the convolution of the two.",
-        github: "https://github.com/ac2522/computer_vision"
-      },
-      {
-        name: "MPI Parallel Matrix Averaging Program",
-        description:
-            "A parallel C program using MPI (Message Passing Interface) threads. It takes in a " +
-            "2D matrix and averages each number based on itself and the numbers surrounding it " +
-            "until it stays within a precision.",
-        github: "https://github.com/Ollie-Armitage/MPI-Parallel-Computing"
-      },
-      {
-        name: "C-Interpreter",
-        description:
-            "Interpreter written in C for a C-like language, supporting variables, functions " +
-            "(as closures), higher order functions, conditionals and comparisons. ",
-        github: "https://github.com/Ollie-Armitage/C-Interpreter"
-      }
-    ]
+    lastPost: null,
+    projects: [],
   }),
   methods: {
     getLastPost: async function () {
       let post = await BlogService.getBlogPost(0)
+
+      if(post.length === 0) return;
+
       post = post[0]
 
       if (post.headerImage ===
@@ -302,8 +264,10 @@ export default {
     },
   },
   async mounted() {
+    this.projects = await ProjectService.getProjects()
     await this.getLastPost()
     this.lastPostLoaded = true
+
   }
 };
 </script>

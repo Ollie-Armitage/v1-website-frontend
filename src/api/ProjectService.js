@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { backendURL } from '@/config'
 
-let url  = backendURL + 'submit'
+let url  = backendURL + 'projects'
 
-class SubmitService {
+
+class ProjectService {
     // Get Posts
-    static getSubmits(){
+    static getProjects(){
+        console.log("Getting Projects")
         // eslint-disable-next-line no-async-promise-executor
         return new Promise(async (resolve, reject) => {
             try{
@@ -20,17 +22,6 @@ class SubmitService {
             }
         })
     }
-
-    // Create Posts
-
-    static insertSubmit(ticket){
-        return axios.post(backendURL, ticket)
-    }
-
-    // Delete Posts
-    static deletePost(id){
-        return axios.delete(`${backendURL}${id}`)
-    }
 }
 
-export default SubmitService
+export default ProjectService
