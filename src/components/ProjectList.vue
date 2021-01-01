@@ -29,6 +29,18 @@ export default {
     return {
       items: [
         {
+          name: "QT",
+          description: "C++ Framework",
+          link: "https://www.qt.io",
+          logo: "qt_icon.png"
+        },
+        {
+          name: "Emscripten",
+          description: "WebAssembly Compiler Toolchain",
+          link: "https://emscripten.org/",
+          logo: "emscripten.jpg"
+        },
+        {
           name: "Vue",
           description: "Frontend JavaScript Framework",
           link: "https://vuejs.org/",
