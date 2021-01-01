@@ -5,7 +5,7 @@ let url  = backendURL + 'projects'
 
 
 class ProjectService {
-    // Get Posts
+    // Get Projects
     static getProjects(){
         // eslint-disable-next-line no-async-promise-executor
         return new Promise(async (resolve, reject) => {

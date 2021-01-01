@@ -1,23 +1,26 @@
 import ProjectService from "@/api/ProjectService";
 
 const state = {
-    projects: []
+    projects: [],
+    projectsLoaded: false
 }
 
 const getters = {
-    allProjects: (state) => state.projects
+    allProjects: (state) => state.projects,
+    getProject: (state) => (name) => { return state.projects.find(project => project.project_id === name) },
 };
 
 const actions = {
     async fetchProjects({ commit }){
         const response =  await ProjectService.getProjects()
-        console.log(response)
         commit('setProjects', response)
+        commit('setProjectsLoaded', true)
     }
 };
 
 const mutations = {
-    setProjects: (state, projects) => (state.projects = projects)
+    setProjects: (state, projects) => (state.projects = projects),
+    setProjectsLoaded: (state, loaded) => (state.projectsLoaded = loaded)
 };
 
 export default {

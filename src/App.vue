@@ -6,18 +6,16 @@
 
 <script>
 
-import { mapActions } from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: 'App',
-  methods: {
-    ...mapActions(['fetchProjects'])
-  },
-  data: () => ({
-    projects: []
-  }),
-  beforeMount(){
-    this.fetchProjects();
+  methods: {...mapActions(['fetchProjects'])},
+  computed: { ...mapGetters(['allProjects'])},
+  async mounted(){
+    if(this.allProjects.length === 0){
+      await this.fetchProjects();
+    }
   }
 
 };
