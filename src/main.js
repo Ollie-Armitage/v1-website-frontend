@@ -7,7 +7,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 
-const DEFAULT_TITLE = 'Some Default Title';
+const DEFAULT_TITLE = "Ollie Armitage Portfolio";
 // eslint-disable-next-line no-unused-vars
 router.afterEach((to, from) => {
   Vue.nextTick(() => {

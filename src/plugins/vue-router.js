@@ -17,10 +17,11 @@ export default new VueRouter({
             title: 'Blog'
             }},
         {
-            path: '/:project_id',
+            path: '/project/:project_id',
             props: true,
             name: 'project',
-            component: ProjectPage
+            component: ProjectPage,
+            title: 'Project'
         }
     ]
 });

@@ -132,7 +132,7 @@
                 <v-card-actions>
                   <v-spacer></v-spacer>
 
-                  <v-tooltip top>
+                  <v-tooltip top v-if="project.githubLink">
                     <template v-slot:activator="{ on, attrs}">
                       <v-btn
                           :href="project.githubLink"
@@ -152,7 +152,7 @@
                           v-bind="attrs"
                           v-on="on"
                           icon
-                      :to="project.project_id">
+                      :to="{ name: 'project', params: {project_id: project.project_id}}">
                         <v-icon large>mdi-arrow-expand</v-icon>
                       </v-btn>
                     </template>
@@ -188,7 +188,7 @@
                     </v-col>
 
                     <v-col cols="2">
-                      <v-row class="justify-end">
+                      <v-row class="justify-end" v-if="project.githubLink">
                         <v-tooltip top>
                           <template v-slot:activator="{on, attrs}">
                             <v-btn
@@ -217,10 +217,6 @@
                             <span>More Info</span>
                           </v-tooltip>
                         </router-link>
-
-
-
-
                       </v-row>
                     </v-col>
                   </v-row>
@@ -259,4 +255,3 @@ export default {
   computed: mapGetters(['allProjects'])
 };
 </script>
-

@@ -2,7 +2,6 @@ import ProjectService from "@/api/ProjectService";
 
 const state = {
     projects: [],
-    projectsLoaded: false
 }
 
 const getters = {
@@ -14,13 +13,11 @@ const actions = {
     async fetchProjects({ commit }){
         const response =  await ProjectService.getProjects()
         commit('setProjects', response)
-        commit('setProjectsLoaded', true)
     }
 };
 
 const mutations = {
     setProjects: (state, projects) => (state.projects = projects),
-    setProjectsLoaded: (state, loaded) => (state.projectsLoaded = loaded)
 };
 
 export default {
