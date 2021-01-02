@@ -9,7 +9,7 @@ const getters = {
 };
 
 const actions = {
-    async fetchProjects({ commit }){
+    async fetchBlogPosts({ commit }){
         const response =  await BlogService.getBlogPost()
         commit('setBlogPosts', response)
     }
