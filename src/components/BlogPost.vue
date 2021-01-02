@@ -22,6 +22,7 @@
 
       <v-card-text class="font-weight-thin" style="font-size: 16px"  v-html="post.body">
       </v-card-text>
+
     </v-card>
   </div>
 
@@ -34,8 +35,7 @@ export default {
 }
 </script>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Merriweather&display=swap');
+<style>
 
 
 ::v-deep .v-image__image {
