@@ -110,8 +110,10 @@
         Take a look at some of my recent web-based projects.
       </template>
 
+
       <v-container>
         <v-row class="justify-center">
+
           <v-col v-for="project in allProjects.slice(0, 2)" :key="project.id" sm="4">
             <v-card
                 outlined
@@ -225,6 +227,8 @@
 
               </v-expansion-panel>
             </v-expansion-panels>
+
+
           </v-col>
         </v-row>
       </v-container>
