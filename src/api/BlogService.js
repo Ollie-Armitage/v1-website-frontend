@@ -5,8 +5,8 @@ let url  = backendURL + 'blog'
 
 class BlogService {
 
-    // Get Posts
-    static getBlogPost(){
+    // Get Blog Posts
+    static getBlogPosts(){
 
 
         // eslint-disable-next-line no-async-promise-executor
@@ -16,7 +16,7 @@ class BlogService {
                 const data = res.data;
                 resolve(data.map(blog => ({
                     ...blog,
-                    createdAt: new Date(blog.createdAt).toLocaleDateString('en-GB')
+                    date: new Date(blog.createdAt).toLocaleDateString('en-GB')
                 })));
             }catch(err){
                 reject(err);

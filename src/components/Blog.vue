@@ -42,7 +42,7 @@ export default {
   methods: {
 
     getBlogPosts: async function () {
-      let posts = await BlogService.getBlogPost(this.counter)
+      let posts = await BlogService.getBlogPosts(this.counter)
       this.counter += posts.length
 
       posts.forEach((post) => {
@@ -50,8 +50,6 @@ export default {
             undefined) {
           post.headerImage = 'bus_stop.jpg'
         }
-
-        post.date = post.createdAt
 
         this.displayedPosts.push(post)
       })

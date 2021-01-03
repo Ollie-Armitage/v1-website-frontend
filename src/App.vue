@@ -10,7 +10,7 @@ import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: 'App',
-  methods: {...mapActions(['fetchProjects'])},
+  methods: {...mapActions(['fetchProjects', 'fetchBlogPosts'])},
   computed: { ...mapGetters(['allProjects'])},
   async mounted(){
     if(this.allProjects.length === 0){
