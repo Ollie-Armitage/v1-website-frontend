@@ -31,7 +31,7 @@
 <script>
 export default {
   name: "BlogPost",
-  props: ['post'],
+  props: ['post']
 }
 </script>
 

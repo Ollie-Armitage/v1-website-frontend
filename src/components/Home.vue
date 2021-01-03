@@ -88,7 +88,8 @@
       </template>
 
       <template v-slot:page-content class="hidden-sm-and-down">
-        <v-card class="pa-4">
+        <v-card class="pa-4" v-if="allBlogPosts.length !== 0">
+          <BlogPost :post="allBlogPosts[0]"></BlogPost>
         </v-card>
         <v-btn
             to="/blog"
@@ -247,15 +248,27 @@
 import PageSection from "@/components/PageSection";
 import ContactMeSection from "@/components/ContactMeSection";
 import ProjectList from "@/components/ProjectList";
-import { mapGetters } from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
+import BlogPost from "@/components/BlogPost";
 
 export default {
   name: "HomePage",
   components: {
+    BlogPost,
     ProjectList,
     ContactMeSection,
     PageSection,
   },
-  computed: mapGetters(['allProjects'])
+  computed: { ... mapGetters(['allProjects', 'allBlogPosts'])},
+  methods: {... mapActions(['fetchBlogPosts']),
+  },
+  async created(){
+    if(this.allBlogPosts.length === 0){
+      await this.fetchBlogPosts()
+      console.log(this.allBlogPosts[0])
+    }
+  }
+
+
 };
 </script>
