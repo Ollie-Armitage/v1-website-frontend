@@ -265,7 +265,6 @@ export default {
   async created(){
     if(this.allBlogPosts.length === 0){
       await this.fetchBlogPosts()
-      console.log(this.allBlogPosts[0])
     }
   }
 
