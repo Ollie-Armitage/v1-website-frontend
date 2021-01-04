@@ -35,7 +35,7 @@
                     </v-col>
                     <v-col>
                 <span style="font-family: 'Inconsolata',sans-serif; font-weight: 200;">
-                     {{ project.description }}
+                  <div v-html="project.description"></div>
                 </span>
 
                     </v-col>
