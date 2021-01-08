@@ -1,27 +1,32 @@
 <template>
   <div>
-    <v-container>
+    <v-container v-if="displayedPosts.length !== 0">
       <v-row class="justify-center" v-for="post in displayedPosts" :key="post._id">
         <v-col sm="10">
           <BlogPost :post="post"></BlogPost>
         </v-col>
 
       </v-row>
+    </v-container>
+    <v-container v-else>
+      <v-row class="justify-center">
+        <v-progress-circular indeterminate color="white"></v-progress-circular>
+      </v-row>
+    </v-container>
+
+
+    <v-container>
       <v-row class="justify-center">
         <v-card outlined>
-          <v-container>
-            <v-btn @click="getBlogPosts()" class="ma-2 primary darken-2">Show More
-              Posts
-            </v-btn>
+          <v-btn @click="getBlogPosts()" class="ma-2 primary darken-2">Show More
+            Posts
+          </v-btn>
 
-            <v-btn to="/" class="ma-2 red darken-4">Home</v-btn>
-          </v-container>
-
+          <v-btn to="/" class="ma-2 red darken-4">Home</v-btn>
         </v-card>
-
       </v-row>
-
     </v-container>
+
 
   </div>
 </template>
