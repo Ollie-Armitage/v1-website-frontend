@@ -91,6 +91,10 @@
         <v-card class="pa-4" v-if="allBlogPosts.length !== 0">
           <BlogPost :post="allBlogPosts[0]"></BlogPost>
         </v-card>
+        <v-card class="pa-4" v-else>
+          <v-progress-circular indeterminate color="white" ></v-progress-circular>
+        </v-card>
+
         <v-btn
             to="/blog"
             class="mt-5 primary darken-2">Blog
@@ -112,8 +116,10 @@
       </template>
 
 
-      <v-container>
+      <v-container v-if="allProjects.length !== 0" >
         <v-row class="justify-center">
+
+
 
           <v-col v-for="project in allProjects.slice(0, 2)" :key="project.id" sm="4">
             <v-card
@@ -229,8 +235,13 @@
               </v-expansion-panel>
             </v-expansion-panels>
 
-
           </v-col>
+
+        </v-row>
+      </v-container>
+      <v-container v-else>
+        <v-row class="justify-center">
+          <v-progress-circular indeterminate color="white" ></v-progress-circular>
         </v-row>
       </v-container>
 
