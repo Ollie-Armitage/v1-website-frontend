@@ -68,6 +68,43 @@
 
       <template v-slot:page-content>
         <ProjectList></ProjectList>
+
+        Find me on:
+
+        <v-container>
+          <v-row>
+            <v-col>
+              <v-tooltip top>
+                <template v-slot:activator="{on, attrs}">
+                  <v-btn
+                      class="ma-1"
+                      href="https://github.com/Ollie-Armitage"
+                      v-bind="attrs"
+                      v-on="on"
+                      icon>
+                    <v-icon large>mdi-github</v-icon>
+                  </v-btn>
+                </template>
+                <span>Github</span>
+              </v-tooltip>
+
+              <v-tooltip top>
+                <template v-slot:activator="{on, attrs}">
+                  <v-btn
+                      class="ma-1"
+                      href="https://www.linkedin.com/in/oliver-armitage-2065211b4/"
+                      v-bind="attrs"
+                      v-on="on"
+                      icon>
+                    <v-icon large>mdi-linkedin</v-icon>
+                  </v-btn>
+                </template>
+                <span>LinkedIn</span>
+              </v-tooltip>
+            </v-col>
+          </v-row>
+        </v-container>
+
       </template>
 
     </PageSection>
